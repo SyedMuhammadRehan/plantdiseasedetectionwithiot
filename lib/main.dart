@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     WidgetsApp.debugAllowBannerOverride=false; 
     return MaterialApp(
-  home: DefaultPage(),
+  home: DefaultPage()
     );
 }
 } 
