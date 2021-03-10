@@ -1,6 +1,8 @@
 
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:plant_disease_detection/app/common_widget/CustomRaisedButton.dart';
+import 'package:plant_disease_detection/app/screens/login.dart';
 import 'package:plant_disease_detection/app/services/auth.dart';
 import 'package:plant_disease_detection/app/signin/createaccount.dart';
 
@@ -24,6 +26,14 @@ Future<void> _signInWithFacebook() async {
     }
   }
 
+Future<void> _signInWithgoogle() async {
+    try {
+  
+      await auth.signInWithGoogle();
+    } catch(e){
+      print(e.toString());
+    }
+  }
 
   void _creatAccount(BuildContext context) {
  
@@ -31,6 +41,15 @@ Future<void> _signInWithFacebook() async {
       MaterialPageRoute<void>(
         fullscreenDialog: true,
         builder: (context) => CreateLogin(auth: auth),
+      ),
+    );
+  }
+  void _login(BuildContext context) {
+ 
+    Navigator.of(context).push(
+      MaterialPageRoute<void>(
+        fullscreenDialog: true,
+        builder: (context) => Login(auth: auth),
       ),
     );
   }
@@ -131,9 +150,7 @@ Future<void> _signInWithFacebook() async {
                                           ),
                                         ],
                                       ),
-                                      onPressed: () {
-                                        print("button pressed");
-                                      }),
+                                      onPressed: _signInWithgoogle),
                                 ),
                                 SizedBox(
                                   height: 15.0,
@@ -200,10 +217,11 @@ Future<void> _signInWithFacebook() async {
                                         ),
                                         onPressed:()=>_creatAccount(context), ),
                                 ),
+                                 
                                 SizedBox(
                                   height: 20.0,
                                 ),
-                                RichText(
+                                RichText( 
                                   textAlign: TextAlign.center,
                                   text: TextSpan(children: <TextSpan>[
                                     TextSpan(
@@ -214,15 +232,17 @@ Future<void> _signInWithFacebook() async {
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
-                                    TextSpan(
+                                    TextSpan(     
+                   
                                       text: 'LOG IN ',
                                       style: TextStyle(
                                         fontSize: 15.0,
                                         color: Colors.red,
                                         fontWeight: FontWeight.bold,
-                                      ),
+                                                       ) ,  
+                                                       recognizer: TapGestureRecognizer()..onTap = ()=>_login(context),
                                     ),
-                                  ]),
+                                  ] ), 
                                 ),
                               ],
                             ),

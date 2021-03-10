@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_pro/carousel_pro.dart';
 import 'package:plant_disease_detection/app/screens/detectimage.dart';
+import 'package:plant_disease_detection/app/screens/faq.dart';
 import 'package:plant_disease_detection/app/screens/profile.dart';
 import 'package:plant_disease_detection/app/screens/update_profile.dart';
 import 'package:plant_disease_detection/app/services/auth.dart';
@@ -35,7 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Future<void> _signOut() async {
+ Future<void> _signOut() async {
     try {
       await widget.auth.signOut();
     } catch (e) {
@@ -148,7 +149,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           ListTile(
                             dense: true,
                             title: Text(
-                              "Image",
+                              "Query",
                               style: TextStyle(color: Colors.black),
                             ),
                             leading: Icon(Icons.image),
@@ -157,7 +158,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   this.context,
                                   new MaterialPageRoute(
                                       builder: (context) =>
-                                          new DetectImage(auth: Auth())));
+                                          new Faq ()));
                             },
                           ),
                           ListTile(
